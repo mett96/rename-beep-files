@@ -1,22 +1,22 @@
-import os, sys
-
-# inFolder = input('drag and drop the folder: \n')
-# inFolder = inFolder.replace("\\", "").replace(" ", "\ ")
-# print(inFolder)
-#
+import os
+import sys
+import traceback
 
 if __name__ == '__main__':
     for arg in sys.argv:
         # next: permettere la ricezione di più cartelle in input
         pass
 
-    if sys.argv[1]:
+    try:
         path = sys.argv[1]
-    else:
+    except IndexError:
         path = input('drag and drop the folder: \n')
+        path = path.replace('\\', '')
+        path = path[:-1]
+    except Exception:
+        traceback.print_exc()
 
     print(path)
-
     print(os.path.exists(path))
 
     os.chdir(path)
@@ -25,9 +25,7 @@ if __name__ == '__main__':
 
     for file in files:
         print(file)
-
-        rename = file.replace('+', ' ')
-
-        print(rename)
-
-        os.rename(file, rename)
+        if '+' in file:
+            rename = file.replace('+', ' ')
+            print(rename)
+            os.rename(file, rename)
