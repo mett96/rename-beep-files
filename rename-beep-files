@@ -1,0 +1,64 @@
+#!/usr/bin/env python
+
+import os
+import argparse
+
+
+def reformat(path, recursive):
+    if not os.path.exists(path):
+        print('Error in path: {}'.format(path))
+        print('The specified path not exist')
+        return
+
+    os.chdir(path)
+    walks = os.walk(path)
+    dirpath, dirnames, filenames = next(walks)
+
+    print(dirpath)
+    print('-'*len(dirpath))
+    for file in filenames:
+        print(file)
+        i = file.rfind('.')
+        name = file[:i]
+        ext = file[i:]
+        if '+' in name:
+            rename = name.replace('+', ' ')
+            while rename[-1] == ' ':
+                rename = rename[:-1]
+            while rename[0] == ' ':
+                rename = rename[1:]
+            print(rename + ext)
+            os.rename(file, rename + ext)
+        print()
+
+    print()
+
+    if recursive:
+        for directory in dirnames:
+            reformat(os.path.join(dirpath, directory), recursive)
+
+    return
+
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Process renames all the file into the target directory.')
+    parser.add_argument('-r', '--recursive', action='store_true', default=False,
+                        help='Execute the rename action recursively into all subdirectories of targeted folder')
+    parser.add_argument('paths', type=str, nargs='*',
+                        help='Specify all the folders in which execute the renaming')
+
+    args = parser.parse_args()
+
+    recursive = args.recursive
+
+    if args.paths:
+        paths = args.paths
+    else:
+        path = input('drag and drop the folder: \n')
+        path = path.replace('\\', '')
+        path = path[:-1]
+        paths = [path]
+
+    for path in paths:
+        reformat(path, recursive)

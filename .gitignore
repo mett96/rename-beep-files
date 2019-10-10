@@ -1,0 +1,12 @@
+.DS_Store
+
+# pycharm
+.idea/
+venv/
+*.pyc
+
+# pip package
+build/
+dist/
+/*.egg-info/
+

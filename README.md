@@ -4,19 +4,26 @@ This small script removes all the `+` characters and replaces them with a space 
 It is a very simple tool but very useful when directly downloading zip files from folders from the [Beep site](https://beep.metid.polimi.it).
 ## Instructions
 
-Download the repository.
-```bash
-git clone https://github.com/mett96/rename-beep-files.git
+Install the package.
+```
+pip install rename-beep-files
 ```
 
-Execute the `main.py` file.
-
-```python
-python3 main.py
+To show the help menu digit
+```
+rename-beep-files -h
 ```
 
-You may include the path of the target folder directly into the execution of the file, otherwise you will be asked by the program, the target folder.
+> usage: renamebeepfiles [-h] [-r] [paths [paths ...]]
+>
+>Process renames all the file into the target directory.
+>
+>positional arguments:
+>  paths            Specify all the folders in which execute the renaming
+>
+>optional arguments:
+>  -h, --help       show this help message and exit
+>  -r, --recursive  Execute the rename action recursively into all
+>                   subdirectories of targeted folder
 
-```python
-python3 main.py path_to_target_folder
-```
+
