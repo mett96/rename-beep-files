@@ -3,6 +3,7 @@
 This script is useful to rename all files inside a folder.     
 Indeed it replaces all the instances of a target string (`target`) in the base name of each file with the character specified (`char`).
 
+
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/mett96/rename-beep-files)
 ![PyPI](https://img.shields.io/pypi/v/rename-beep-files?color=gre&logoColor=green)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/rename-beep-files)
