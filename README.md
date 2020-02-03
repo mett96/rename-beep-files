@@ -31,7 +31,7 @@ You may include several options:
 * folder path
 
 ```bash
-$ rename-beep-files -h                                                                                                                       ░▒▓ 2.12G   | 2.50   
+$ rename-beep-files -h   
 usage: rename-beep-files [-h] [-r] [-t TARGET] [-c CHAR] [paths [paths ...]]
 
 Process renames all the file into the target directory.
